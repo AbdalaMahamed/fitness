@@ -3,22 +3,10 @@
     <HeaderComponent @navigate="currentPage = $event" />
 
     <div class="page-content">
-      <div v-if="currentPage === 'home'">
-        <HelloWorld msg="Welcome to Your Vue.js App" />
-      </div>
-
-      <div v-if="currentPage === 'fitness'">
-        <FitnessPage />
-      </div>
-
-      <div v-if="currentPage === 'contact'">
-        <h1>Contact Page</h1>
-        <p>Contact us for more information.</p>
-      </div>
-
-      <div v-if="currentPage === 'about'">
-        <AboutPage />
-      </div>
+      <HelloWorld v-if="currentPage === 'home'" msg="Welcome to Your Vue.js App" />
+      <FitnessPage v-else-if="currentPage === 'fitness'" />
+      <AboutPage v-else-if="currentPage === 'about'" />
+      <ContactPage v-else-if="currentPage === 'contact'" />
     </div>
 
     <FooterComponent />
@@ -30,7 +18,8 @@ import HeaderComponent from './components/Header.vue'
 import FooterComponent from './components/Footer.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import AboutPage from './components/About.vue'
-import FitnessPage from './components/Fitness.vue'  // Let op hier
+import FitnessPage from './components/Fitness.vue'
+import ContactPage from './components/ContactPage.vue'
 
 export default {
   name: 'App',
@@ -40,6 +29,7 @@ export default {
     HelloWorld,
     AboutPage,
     FitnessPage,
+    ContactPage
   },
   data() {
     return {
