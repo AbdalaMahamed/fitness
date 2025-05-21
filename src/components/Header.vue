@@ -5,7 +5,7 @@
     </div>
     <nav class="nav">
       <button @click="$emit('navigate', 'home')">Home</button>
-      <button @click="$emit('navigate', 'fitness')">Fitness</button>
+      <button @click="$emit('navigate', 'fitness')">Workouts</button>
       <button @click="$emit('navigate', 'contact')">Contact</button>
       <button @click="$emit('navigate', 'about')">About Us</button>
     </nav>
