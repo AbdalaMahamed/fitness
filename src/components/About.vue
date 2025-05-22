@@ -1,24 +1,22 @@
 <template>
-  <section class="about-page">
-    <div class="content-wrapper">
-      <h1>About Our Fitness Website</h1>
+  <section class="about-modern">
+    <div class="text-section">
+      <h1 class="title">Welcome to <span class="gradient-text">FitNova</span></h1>
       <p>
-        Welcome to <span class="highlight">FitLife</span>, your ultimate fitness companion.
-        We believe fitness is more than exercise — it's a lifestyle that strengthens body, mind, and spirit.
+        At FitNova, we redefine fitness. It’s not just about reps and sets — it's about balance, mindset, and a powerful community.
       </p>
       <p>
-        Our mission is to motivate and empower you through expert workout tips, balanced nutrition advice,
-        and inspiring stories. Whether you're just starting out or pushing your limits, we’re here to guide you.
+        With science-backed workouts, smart nutrition advice, and real transformation stories, we help you become your best self — one day at a time.
       </p>
       <p>
-        Join thousands of users who’ve transformed their lives by embracing a healthier, happier lifestyle with FitLife.
-        Let’s build your best self — together.
+        Whether you’re starting your journey or breaking limits, we’re with you. Let’s level up — together.
       </p>
     </div>
-    <div class="image-wrapper">
+    <div class="visual-section">
       <img
-        src="https://images.unsplash.com/photo-1594737625785-c1e30f2a298d?auto=format&fit=crop&w=600&q=80"
-        alt="Fitness motivation"
+        src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80"
+        alt="Focused athlete"
+        class="main-image"
       />
     </div>
   </section>
@@ -26,63 +24,107 @@
 
 <script>
 export default {
-  name: "AboutPage",
+  name: "AboutModern",
 };
 </script>
 
 <style scoped>
-.about-page {
+.about-modern {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(135deg, #6bc1ff, #1e3c72);
-  color: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(30, 60, 114, 0.4);
-  max-width: 900px;
-  margin: 2rem auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  justify-content: space-between;
+  padding: 4rem 3rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #0f172a;
+  color: #f1f5f9;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-.content-wrapper {
-  flex: 1 1 400px;
+.text-section {
+  flex: 1 1 600px;
   padding: 1rem 2rem;
+  animation: slideInLeft 1.2s ease;
 }
 
-.content-wrapper h1 {
-  font-size: 2.8rem;
+.title {
+  font-size: 3.2rem;
   margin-bottom: 1.5rem;
-  font-weight: 700;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  font-weight: 800;
+  line-height: 1.2;
 }
 
-.content-wrapper p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+.gradient-text {
+  background: linear-gradient(90deg, #34d399, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.highlight {
-  font-weight: 900;
-  color: #ffdd57;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+.text-section p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
 }
 
-.image-wrapper {
-  flex: 1 1 300px;
-  padding: 1rem 2rem;
+.visual-section {
+  flex: 1 1 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  animation: slideInRight 1.2s ease;
 }
 
-.image-wrapper img {
-  max-width: 100%;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+.main-image {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 16px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
   object-fit: cover;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .about-modern {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-modern {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .text-section,
+  .visual-section {
+    padding: 1rem 0;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
 }
 </style>
