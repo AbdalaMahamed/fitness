@@ -26,7 +26,7 @@
         <li v-for="exercise in exercises" :key="exercise.id" class="exercise-card">
           <h3>{{ exercise.name }}</h3>
           <img
-            v-if="exercise.images.length"
+            v-if="exercise.images && exercise.images.length"
             :src="exercise.images[0].image"
             :alt="exercise.name"
             class="exercise-image"
@@ -43,10 +43,13 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "WorkoutCategories",
   data() {
     return {
+      apiBaseUrl: "http://your-laravel-api-domain/api", // Change to your Laravel API base URL
       categories: [],
       selectedCategoryId: null,
       exercises: [],
@@ -61,12 +64,11 @@ export default {
       this.loadingCategories = true;
       this.errorCategories = null;
       try {
-        const res = await fetch("https://wger.de/api/v2/exercisecategory/");
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        const data = await res.json();
-        this.categories = data.results;
-      } catch (e) {
-        this.errorCategories = e.message || "Failed to load categories";
+        const response = await axios.get(`${this.apiBaseUrl}/body-parts`);
+        // Assuming response.data contains array of categories
+        this.categories = response.data;
+      } catch (error) {
+        this.errorCategories = error.response?.data?.message || error.message || "Failed to load categories";
       } finally {
         this.loadingCategories = false;
       }
@@ -76,15 +78,11 @@ export default {
       this.errorExercises = null;
       this.exercises = [];
       try {
-        // Fetch exercises filtered by category, language=2 is English
-        const res = await fetch(
-          `https://wger.de/api/v2/exerciseinfo/?language=2&category=${categoryId}`
-        );
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        const data = await res.json();
-        this.exercises = data.results.filter(ex => ex.images && ex.images.length);
-      } catch (e) {
-        this.errorExercises = e.message || "Failed to load exercises";
+        const response = await axios.get(`${this.apiBaseUrl}/workouts/body-part/${categoryId}`);
+        // Assuming response.data contains array of exercises
+        this.exercises = response.data;
+      } catch (error) {
+        this.errorExercises = error.response?.data?.message || error.message || "Failed to load exercises";
       } finally {
         this.loadingExercises = false;
       }
@@ -94,7 +92,7 @@ export default {
       this.fetchExercisesByCategory(categoryId);
     },
     getCategoryName(id) {
-      const cat = this.categories.find(c => c.id === id);
+      const cat = this.categories.find((c) => c.id === id);
       return cat ? cat.name : "";
     },
   },
@@ -105,73 +103,5 @@ export default {
 </script>
 
 <style scoped>
-.fitness-page {
-  max-width: 800px;
-  margin: 2rem auto;
-  font-family: Arial, sans-serif;
-  padding: 1rem;
-  color: #222;
-}
-
-.loading,
-.error {
-  text-align: center;
-  font-weight: bold;
-  margin: 1.5rem 0;
-  color: #d00;
-}
-
-.category-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  padding: 0;
-  list-style: none;
-  margin-bottom: 1.5rem;
-}
-
-.category-list li {
-  cursor: pointer;
-  padding: 0.6rem 1.2rem;
-  background: #ddd;
-  border-radius: 20px;
-  user-select: none;
-  transition: background-color 0.3s ease;
-}
-
-.category-list li.selected,
-.category-list li:hover {
-  background: #4f46e5;
-  color: white;
-}
-
-.exercise-list {
-  list-style: none;
-  padding: 0;
-}
-
-.exercise-card {
-  background: #eef6ff;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
-}
-
-.exercise-card h3 {
-  margin: 0 0 0.5rem;
-  color: #1e3a8a;
-}
-
-.exercise-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-
-.exercise-card p {
-  margin: 0.5rem 0;
-  line-height: 1.4;
-}
+/* Your existing styles here */
 </style>

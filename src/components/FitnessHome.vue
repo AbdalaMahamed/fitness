@@ -1,49 +1,63 @@
 <template>
   <div>
     <!-- Hero Section -->
-    <section class="hero-image" style="background-image: url('/assets/your-image.jpg')">
-      <div class="overlay">
-        <h1>Welcome to WORK</h1>
-        <p>Premium Personal Training Health Club in the heart of Strijp-S Eindhoven</p>
-        <button @click="$emit('navigate', 'fitness')">Start Training</button>
+    <section class="hero">
+      <div class="hero-overlay">
+        <h1>Unleash Your Potential</h1>
+        <p class="sub">Transform your body and mind with expert coaching and customized fitness plans.</p>
+        <button @click="scrollToWorkout">Get Started</button>
       </div>
     </section>
 
-    <!-- Club Section -->
-    <section class="split-section">
-      <img src="https://static.wixstatic.com/media/80cc9e_2be2c18e9df849d5bbb73f2095af1f1f~mv2.jpg/v1/fill/w_1901,h_880,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/80cc9e_2be2c18e9df849d5bbb73f2095af1f1f~mv2.jpg" alt="Club Image" />
-      <div class="text">
-        <h3>A Club Designed for You</h3>
-        <p>We built a club for EVERYONE. Fun, inviting, a little chic. Skip the big gym hassles. Enjoy the luxury of a personalized space.</p>
-        <button @click="$emit('navigate', 'club')">See the Club</button>
-      </div>
-    </section>
-
-    <!-- Training Section -->
-    <section class="split-section reverse">
-      <img src="https://assets-us-01.kc-usercontent.com/a07c5ec0-e08a-0014-c8c5-a7a73768c21f/d88f6bc9-3495-4e04-87d3-17fd6ce3e38e/TrainingFundamentals2-954x534.jpg" alt="Training Image" />
-      <div class="text">
-        <h3>Training for Your Style</h3>
-        <p>Get a personal plan and expert coaching that pushes your limits. Our approach keeps you inspired and progressing.</p>
-        <button @click="$emit('navigate', 'fitness')">See Training</button>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-      <h2>What Our Members Say</h2>
-      <div class="testimonials-container">
-        <div class="testimonial">
-          <p>"The trainers here truly care about your progress. Best gym experience ever!"</p>
-          <h4>- Alex P.</h4>
+    <!-- Program Features Grid -->
+    <section class="features">
+      <h2>What We Offer</h2>
+      <div class="grid">
+        <div class="feature-card">
+          <img src="https://img.icons8.com/ios-filled/100/weightlifting.png" alt="Strength" />
+          <h3>Strength Training</h3>
+          <p>Build muscle, gain strength, and increase endurance with personalized programs.</p>
         </div>
-        <div class="testimonial">
-          <p>"I love the personalized plans and the supportive community."</p>
-          <h4>- Maria S.</h4>
+        <div class="feature-card">
+          <img src="https://img.icons8.com/ios-filled/100/apple.png" alt="Nutrition" />
+          <h3>Nutrition Coaching</h3>
+          <p>Learn what to eat and when. Tailored meal plans that match your fitness goals.</p>
         </div>
-        <div class="testimonial">
-          <p>"Facilities are clean and welcoming, with a great atmosphere."</p>
-          <h4>- John D.</h4>
+        <div class="feature-card">
+          <img src="https://img.icons8.com/ios-filled/100/yoga.png" alt="Mobility" />
+          <h3>Mobility & Recovery</h3>
+          <p>Stay flexible, injury-free, and optimize performance with smart recovery routines.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Training Preview -->
+    <section id="workout" class="training-preview">
+      <div class="text">
+        <h2>Start Your Journey Today</h2>
+        <p>
+          Whether you're new to training or a seasoned athlete, we’ll guide you to your goals with science-backed techniques and accountability.
+        </p>
+        <button @click="$emit('navigate', 'fitness')">See Fitness Plans</button>
+      </div>
+      <iframe class="video" src="https://www.youtube.com/shorts/PPmvh7gBTi0" title="Workout intro" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <h2>What Members Say</h2>
+      <div class="cards">
+        <div class="card">
+          <p>“Down 8kg and stronger than ever. The trainers here care and it shows.”</p>
+          <h4>- Jamie R.</h4>
+        </div>
+        <div class="card">
+          <p>“I actually look forward to working out now. The results speak for themselves.”</p>
+          <h4>- Lina K.</h4>
+        </div>
+        <div class="card">
+          <p>“Nutrition + training = results. Best decision I made this year.”</p>
+          <h4>- David M.</h4>
         </div>
       </div>
     </section>
@@ -53,157 +67,167 @@
 <script>
 export default {
   name: 'FitnessHome',
-}
+  methods: {
+    scrollToWorkout() {
+      const el = document.getElementById('workout');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffffff;
-  color: #111;
-}
-
-.hero-image,
-.full-image {
-  width: 100%;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
+/* Hero Section */
+.hero {
+  background: url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+  height: 90vh;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.hero-image .overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 3rem;
-  border-radius: 12px;
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
-  text-align: center;
-}
-
-.hero-image .overlay h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero-image .overlay p {
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
-}
-
-.hero-image .overlay button {
-  background-color: #d10505;
-  border: none;
-  padding: 1rem 2.5rem;
-  font-size: 1.2rem;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-.hero-image .overlay button:hover {
-  background-color: #a00303;
-}
-
-.split-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
-  margin: 4rem auto;
-  max-width: 1200px;
   padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  max-width: 90%;
 }
-.split-section.reverse {
-  flex-direction: row-reverse;
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
 }
-.split-section img {
-  flex: 1 1 50%;
-  max-width: 100%;
-  border-radius: 12px;
+.hero-overlay .sub {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
-.split-section .text {
-  flex: 1 1 50%;
-}
-.split-section .text h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.split-section .text p {
-  font-size: 1.1rem;
-  color: #444;
-  line-height: 1.6;
-}
-.split-section .text button {
-  margin-top: 1rem;
-  background: #d10505;
+.hero-overlay button {
+  background-color: #e11d48;
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 2rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
 }
-.split-section .text button:hover {
-  background: #a00303;
+.hero-overlay button:hover {
+  background-color: #be123c;
 }
 
-/* Testimonials Section */
-.testimonials-section {
-  background: #f7f7f7;
-  padding: 4rem 2rem;
+/* Features Section */
+.features {
+  background-color: #f1f5f9;
+  padding: 3rem 2rem;
   text-align: center;
-  max-width: 900px;
-  margin: 4rem auto;
-  border-radius: 12px;
 }
-
-.testimonials-section h2 {
-  font-size: 2.5rem;
+.features h2 {
+  font-size: 2rem;
   margin-bottom: 2rem;
-  color: #d10505;
 }
-
-.testimonials-container {
+.grid {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
 }
-
-.testimonial {
+.feature-card {
   background: white;
+  border-radius: 1rem;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
-  flex: 1 1 250px;
-  max-width: 300px;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-
-.testimonial p {
-  font-style: italic;
-  color: #555;
+.feature-card img {
+  width: 50px;
   margin-bottom: 1rem;
 }
+.feature-card h3 {
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+.feature-card p {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
 
-.testimonial h4 {
-  font-weight: 600;
-  color: #333;
+/* Training Preview */
+.training-preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 2rem;
+}
+.training-preview .text {
+  flex: 1 1 400px;
+}
+.training-preview h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.training-preview p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.training-preview button {
+  background-color: #0f172a;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.video {
+  flex: 1 1 400px;
+  width: 100%;
+  height: 250px;
+  border-radius: 1rem;
+}
+
+/* Testimonials */
+.testimonials {
+  background: #f9fafb;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.testimonials h2 {
+  margin-bottom: 2rem;
+}
+.cards {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+.card p {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.card h4 {
+  color: #1f2937;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero-image .overlay h1 {
-    font-size: 2.2rem;
-  }
-  .split-section {
+  .training-preview {
     flex-direction: column;
   }
-  .testimonials-container {
+  .grid {
     flex-direction: column;
+    align-items: center;
+  }
+  .video {
+    height: 200px;
   }
 }
 </style>

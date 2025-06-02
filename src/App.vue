@@ -5,7 +5,7 @@
 
     <!-- Main content area -->
     <div class="page-content">
-      <FitnessHome v-if="currentPage === 'home'" />
+      <FitnessHome v-if="currentPage === 'home'" @navigate="currentPage = $event" />
       <FitnessPage v-else-if="currentPage === 'fitness'" />
       <AboutPage v-else-if="currentPage === 'about'" />
       <ContactPage v-else-if="currentPage === 'contact'" />
@@ -43,20 +43,18 @@ export default {
 </script>
 
 <style>
-/* Zorgt dat de volledige pagina zich uitstrekt tot minimaal de hoogte van het scherm */
 #app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f8fafc; /* optioneel: lichte achtergrondkleur */
+  background-color: #f8fafc;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #1e293b;
   margin: 0;
 }
 
-/* Deze div groeit om de ruimte tussen header en footer op te vullen */
 .page-content {
   flex: 1;
-  padding: 2rem 1rem; /* optioneel: ruimte rond de content */
+  padding: 2rem 1rem;
 }
 </style>
