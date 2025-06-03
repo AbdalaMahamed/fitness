@@ -8,7 +8,7 @@
     <div class="footer-content">
       <div class="brand">
        
-        <p>&copy; 2025 IronCore. All rights reserved.</p>
+        <p>&copy; 2025 WolfRep. All rights reserved.</p>
       </div>
 
       <div class="social-links">

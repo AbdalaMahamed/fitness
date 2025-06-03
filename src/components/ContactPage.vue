@@ -1,92 +1,160 @@
 <template>
-  <section class="contact-container">
-    <div class="language-toggle">
-      <button :class="{ active: lang === 'nl' }" @click="lang = 'nl'">Nederlands</button>
-      <button :class="{ active: lang === 'en' }" @click="lang = 'en'">English</button>
-    </div>
+  <main class="contact-container">
+    <!-- Banner Image -->
+    <img
+      class="banner-image"
+      src="https://jeffnippard.com/cdn/shop/files/contact.jpg?v=1713836812&width=1800"
+      alt="Contact Banner"
+    />
 
-    <h2>{{ texts.title }}</h2>
-    <p>{{ texts.subtitle }}</p>
+    <h1>Contact</h1>
 
-    <form class="contact-form" @submit.prevent="handleSubmit" v-if="!submitted">
-      <input v-model="name" :placeholder="texts.namePlaceholder" required />
-      <input v-model="email" type="email" :placeholder="texts.emailPlaceholder" required />
-      <textarea v-model="message" :placeholder="texts.messagePlaceholder" rows="5" required></textarea>
-      <button type="submit" :disabled="loading">
-        {{ loading ? texts.sending : texts.sendButton }}
-      </button>
-    </form>
+    <section class="contact-info">
+      <h2>Question About Your Order?</h2>
+      <p>
+        Send an email to
+        <a href="mailto:info@jeffnippard.com">info@jeffnippard.com</a> and please allow
+        3-5 business days for a reply.
+      </p>
 
-    <div v-if="submitted" class="success-message">
-      <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-      </svg>
-      <h3>{{ texts.thankYou }}, {{ name }}!</h3>
-      <p>{{ texts.receivedMessage }}</p>
-      <button @click="resetForm" class="reset-btn">{{ texts.sendAnother }}</button>
-    </div>
-  </section>
+      <h2>Money Back Information</h2>
+      <p>
+        We review your request and respond via email, and if approved, a credit will be
+        issued within 30 days. Contact the card-issuing bank for details.
+      </p>
+
+      <h2>Still Need Help?</h2>
+      <p>
+        If you have any feedback or questions about our website or our service in general,
+        please send us a message by completing our enquiry form below.
+      </p>
+    </section>
+
+    <section class="form-section">
+      <div class="form-image-wrapper">
+        <img
+          src="https://jeffnippard.com/cdn/shop/files/contact-jeff-nippard.png?v=1713843553&width=800"
+          alt="Contact Illustration"
+          class="form-image"
+        />
+      </div>
+
+      <form @submit.prevent="submitForm" novalidate>
+        <h2>Enquiry Form</h2>
+
+        <label>
+          Full Name *
+          <input
+            type="text"
+            v-model.trim="form.fullName"
+            required
+            placeholder="Your full name"
+          />
+        </label>
+
+        <label>
+          Email *
+          <input
+            type="email"
+            v-model.trim="form.email"
+            required
+            placeholder="Your email address"
+          />
+        </label>
+
+        <label>
+          Subject *
+          <input
+            type="text"
+            v-model.trim="form.subject"
+            required
+            placeholder="Subject of your enquiry"
+          />
+        </label>
+
+        <label>
+          Order Number
+          <input
+            type="text"
+            v-model.trim="form.orderNumber"
+            placeholder="If applicable"
+          />
+        </label>
+
+        <label>
+          Message *
+          <textarea
+            v-model.trim="form.message"
+            required
+            placeholder="Your message"
+            rows="6"
+          ></textarea>
+        </label>
+
+        <button type="submit" :disabled="loading">
+          {{ loading ? 'Submitting...' : 'Submit' }}
+        </button>
+
+        <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+        <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+      </form>
+    </section>
+  </main>
 </template>
 
 <script>
 export default {
-  name: "ContactPage",
+  name: 'ContactPage',
   data() {
     return {
-      lang: "nl", // default language
-      name: "",
-      email: "",
-      message: "",
-      submitted: false,
-      loading: false,
-      textsByLang: {
-        nl: {
-          title: "Neem Contact Op",
-          subtitle: "Als je vragen hebt of wilt deelnemen, neem dan hieronder contact met ons op.",
-          namePlaceholder: "Je Naam",
-          emailPlaceholder: "Je E-mail",
-          messagePlaceholder: "Je Bericht",
-          sendButton: "Verzend Bericht",
-          sending: "Bezig met verzenden...",
-          thankYou: "Bedankt",
-          receivedMessage: "We hebben je bericht ontvangen en nemen spoedig contact met je op.",
-          sendAnother: "Verzend nog een bericht",
-        },
-        en: {
-          title: "Contact Us",
-          subtitle: "If you have any questions or want to join, reach out below.",
-          namePlaceholder: "Your Name",
-          emailPlaceholder: "Your Email",
-          messagePlaceholder: "Your Message",
-          sendButton: "Send Message",
-          sending: "Sending...",
-          thankYou: "Thank you",
-          receivedMessage: "We have received your message and will contact you shortly.",
-          sendAnother: "Send another message",
-        },
+      form: {
+        fullName: '',
+        email: '',
+        subject: '',
+        orderNumber: '',
+        message: '',
       },
+      loading: false,
+      successMessage: '',
+      errorMessage: '',
     };
   },
-  computed: {
-    texts() {
-      return this.textsByLang[this.lang];
-    },
-  },
   methods: {
-    async handleSubmit() {
+    async submitForm() {
+      this.successMessage = '';
+      this.errorMessage = '';
       this.loading = true;
 
-      // Simulate sending process (replace with real API call)
-      await new Promise((r) => setTimeout(r, 1500));
+      if (
+        !this.form.fullName ||
+        !this.form.email ||
+        !this.form.subject ||
+        !this.form.message
+      ) {
+        this.errorMessage = 'Please fill out all required fields.';
+        this.loading = false;
+        return;
+      }
 
-      this.submitted = true;
-      this.loading = false;
-    },
-    resetForm() {
-      this.name = "";
-      this.email = "";
-      this.message = "";
-      this.submitted = false;
+      try {
+        // Simulate API call delay
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        // Reset form on success
+        this.successMessage =
+          'Thank you for your message! We will get back to you shortly.';
+        this.form = {
+          fullName: '',
+          email: '',
+          subject: '',
+          orderNumber: '',
+          message: '',
+        };
+      } catch {
+        this.errorMessage = 'Oops! Something went wrong. Please try again later.';
+      } finally {
+        this.loading = false;
+      }
     },
   },
 };
@@ -94,117 +162,154 @@ export default {
 
 <style scoped>
 .contact-container {
-  padding: 2rem;
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #111;
+  max-width: 900px;
+  margin: 3rem auto 5rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #222;
+  padding: 0 1rem;
 }
 
-/* Language toggle */
-.language-toggle {
-  margin-bottom: 1.5rem;
-}
-.language-toggle button {
-  background: none;
-  border: 2px solid #000;
-  padding: 0.5rem 1rem;
-  margin: 0 0.25rem;
+.banner-image {
+  width: 100%;
+  height: auto;
   border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s, color 0.3s;
-}
-.language-toggle button.active,
-.language-toggle button:hover {
-  background-color: #000;
-  color: white;
+  margin-bottom: 2.5rem;
+  object-fit: cover;
 }
 
-.contact-form {
+h1 {
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #d32f2f;
+}
+
+.contact-info {
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.contact-info h2 {
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #d32f2f;
+}
+
+.contact-info a {
+  color: #d32f2f;
+  text-decoration: underline;
+}
+
+.form-section {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.form-image-wrapper {
+  flex: 1 1 300px;
+  max-width: 350px;
+}
+
+.form-image {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+form {
+  flex: 1 1 400px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
-.contact-form input,
-.contact-form textarea {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+form h2 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #d32f2f;
+  text-align: left;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #555;
   font-size: 1rem;
-  transition: border-color 0.3s;
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #000;
-  outline: none;
-}
-
-.contact-form button {
-  padding: 0.75rem;
-  background-color: #000;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.contact-form button:disabled {
-  background-color: #555;
-  cursor: not-allowed;
-}
-
-.contact-form button:hover:not(:disabled) {
-  background-color: #d10505;
-}
-
-/* Success message styling */
-.success-message {
-  background: #e6f4ea;
-  border: 2px solid #27ae60;
-  border-radius: 12px;
-  padding: 2rem;
-  color: #2c6a2c;
-  animation: fadeIn 0.7s ease forwards;
-  display: inline-block;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.check-icon {
-  width: 60px;
-  height: 60px;
-  stroke: #27ae60;
   margin-bottom: 1rem;
 }
 
-.reset-btn {
-  margin-top: 1.5rem;
-  background: transparent;
-  border: 2px solid #27ae60;
-  color: #27ae60;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s, color 0.3s;
+input,
+textarea {
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.2s ease;
 }
 
-.reset-btn:hover {
-  background-color: #27ae60;
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #d32f2f;
+  box-shadow: 0 0 3px #d32f2f;
+}
+
+button {
+  margin-top: 1rem;
+  background-color: #d32f2f;
   color: white;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  width: 150px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+button:disabled {
+  background-color: #f29999;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #a52828;
+}
+
+.success-message {
+  margin-top: 1rem;
+  color: #388e3c;
+  font-weight: 600;
+  text-align: left;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: #d32f2f;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-section {
+    flex-direction: column;
   }
-  to {
-    opacity: 1;
+  .form-image-wrapper,
+  form {
+    max-width: 100%;
+    flex: none;
   }
 }
 </style>

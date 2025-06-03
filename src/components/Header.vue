@@ -1,18 +1,15 @@
 <template>
   <header class="header">
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-
     <div class="logo">
-      <img src="@/assets\logo1.png" alt="Logo" />
+      <img src="@/assets/logo1.png" alt="Logo" />
       <span></span>
     </div>
 
     <nav class="nav">
       <button @click="$emit('navigate', 'home')">Home</button>
       <button @click="$emit('navigate', 'fitness')">Workouts</button>
+      <!-- Fixed button closing tag -->
+<button @click="$emit('navigate', 'nutrition')">Nutrition Plan</button>
       <button @click="$emit('navigate', 'contact')">Contact</button>
       <button @click="$emit('navigate', 'about')">About Us</button>
     </nav>
