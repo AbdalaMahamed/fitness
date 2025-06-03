@@ -3,7 +3,7 @@
     <!-- Banner Image -->
     <img
       class="banner-image"
-      src="https://jeffnippard.com/cdn/shop/files/contact.jpg?v=1713836812&width=1800"
+      src="https://www.verywellfit.com/thmb/dT2j--w4-qV_dXTGu7NsnQCYC0A=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/1229823-GettyImages-1370779225-1c0cadcb4dd045daa2dad4e3040acf65.jpg"
       alt="Contact Banner"
     />
 
@@ -170,8 +170,8 @@ export default {
 }
 
 .banner-image {
-  width: 100%;
-  height: auto;
+  width: 50%;
+  height: 100%;
   border-radius: 8px;
   margin-bottom: 2.5rem;
   object-fit: cover;

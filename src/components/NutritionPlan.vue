@@ -11,7 +11,7 @@
           <p class="guarantee">30-day money-back guarantee</p>
         </div>
         <div class="image-block">
-          <img src="https://jeffnippard.com/cdn/shop/products/The-Ultimate-Guide-To-Body-Recomposition-2.png?v=1666231359&width=600" alt="Ultimate Guide to Body Recomposition" />
+          <img src="https://i.pinimg.com/736x/3e/a4/55/3ea455608afb98246896c214dcb65a8c.jpg" alt="Ultimate Guide to Body Recomposition" />
         </div>
       </div>
     </section>
