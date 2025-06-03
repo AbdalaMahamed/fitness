@@ -25,8 +25,13 @@ export default {
   name: 'App',
   components: { HeaderComponent, FooterComponent, FitnessHome, FitnessPage, NutritionPlan, AboutPage, ContactPage },
   data() {
-    return {
-      currentPage: 'home'
+  return {
+      currentPage: localStorage.getItem('currentPage') || 'home'
+    }
+  },
+  watch: {
+    currentPage(newPage) {
+      localStorage.setItem('currentPage', newPage)
     }
   }
 }
