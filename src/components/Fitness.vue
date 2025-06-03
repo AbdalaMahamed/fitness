@@ -112,118 +112,159 @@ export default {
 
 <style scoped>
 .fitness-page {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 2rem auto;
-  font-family: Arial, sans-serif;
-  padding: 1rem;
-  color: #222;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  background-color: #0f0f0f;
   text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ffffff20;
+  display: inline-block;
+  padding-bottom: 0.5rem;
 }
 
 .body-part-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 1rem;
   justify-content: center;
+  margin-bottom: 2.5rem;
 }
 
 .body-part-buttons button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #1e3a8a;
-  color: white;
-  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #ffffff30;
+  border-radius: 999px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .body-part-buttons button:hover {
-  background-color: #3b82f6;
+  background-color: #ffffff10;
+  border-color: #ffffff60;
 }
 
 .body-part-buttons button.active {
-  background-color: #2563eb;
-  font-weight: bold;
+  background-color: #ffffff20;
+  border-color: #ffffff80;
+  box-shadow: 0 0 10px #ffffff30;
 }
 
 .loading,
 .error {
-  text-align: center;
-  font-weight: bold;
-  margin: 1.5rem 0;
-  color: #d00;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin: 2rem 0;
 }
 
 .exercise-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
+  justify-items: center;
 }
 
+
 .exercise-card {
-  background: #eef6ff;
-  border-radius: 8px;
-  padding: 1rem;
-  width: 100%;
-  max-width: 300px;
-  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
-  box-sizing: border-box;
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  border: 1px solid #2a2a2a;
+}
+
+.exercise-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.1);
 }
 
 .exercise-card h3 {
+  font-size: 1.4rem;
+  color: #ffffff;
   margin-top: 0;
-  color: #1e3a8a;
-  font-size: 1.1rem;
 }
 
 .exercise-image {
-  width: 90px;
-  height: 90px;
+  width: 100%;
+  height: 240px;
   object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin: 0.5rem 0;
+  border-radius: 12px;
+  border: 2px solid #333;
+  margin: 1rem 0;
+  transition: transform 0.3s ease;
   cursor: pointer;
+  filter: grayscale(100%) brightness(0.9);
 }
 
-/* Video Modal Styles */
+.exercise-image:hover {
+  transform: scale(1.03);
+  filter: grayscale(0%) brightness(1);
+}
+
+/* Video Modal */
 .video-modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .video-container {
   position: relative;
-  max-width: 800px;
+  max-width: 900px;
   width: 90%;
   background: #000;
+  border-radius: 16px;
   padding: 1rem;
-  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
 }
 
 .close-btn {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 10px;
+  right: 10px;
   background: transparent;
   border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  cursor: pointer;
+  color: white;
+  font-size: 2rem;
   font-weight: bold;
-  line-height: 1;
-  padding: 0;
+  cursor: pointer;
+  z-index: 10;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 </style>
