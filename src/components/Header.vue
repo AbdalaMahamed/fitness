@@ -5,11 +5,16 @@
       <span></span>
     </div>
 
-    <nav class="nav">
+    <button class="hamburger" @click="toggleMenu" aria-label="Toggle navigation">
+      <span :class="{ open: menuOpen }"></span>
+      <span :class="{ open: menuOpen }"></span>
+      <span :class="{ open: menuOpen }"></span>
+    </button>
+
+    <nav :class="['nav', { open: menuOpen }]">
       <button @click="$emit('navigate', 'home')">Home</button>
       <button @click="$emit('navigate', 'fitness')">Workouts</button>
-      <!-- Fixed button closing tag -->
-<button @click="$emit('navigate', 'nutrition')">Nutrition Plan</button>
+      <button @click="$emit('navigate', 'nutrition')">Nutrition Plan</button>
       <button @click="$emit('navigate', 'contact')">Contact</button>
       <button @click="$emit('navigate', 'about')">About Us</button>
     </nav>
@@ -19,6 +24,16 @@
 <script>
 export default {
   name: 'HeaderComponent',
+  data() {
+    return {
+      menuOpen: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+    }
+  }
 };
 </script>
 
@@ -30,7 +45,6 @@ export default {
   padding: 1rem 2rem;
   background-color: #000;
   color: #fff;
-  border-bottom: 1px solid #333;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -44,7 +58,7 @@ export default {
 }
 
 .logo img {
-  height: 100px;
+  height: 60px; /* iets kleiner voor mobiel en desktop */
   object-fit: contain;
 }
 
@@ -55,6 +69,7 @@ export default {
   color: #fff;
 }
 
+/* Nav standaard desktop */
 .nav {
   display: flex;
   gap: 1rem;
@@ -93,16 +108,55 @@ export default {
   background-color: #facc15;
 }
 
+/* Hamburger knop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: 1px;
+}
+
+.hamburger span.open:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hamburger span.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger span.open:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* Mobiel: hamburger tonen, menu verbergen */
 @media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
+  .hamburger {
+    display: flex;
   }
 
   .nav {
-    flex-wrap: wrap;
+    display: none;
+    flex-direction: column;
     width: 100%;
     margin-top: 0.5rem;
+  }
+
+  .nav.open {
+    display: flex;
   }
 
   .nav button {

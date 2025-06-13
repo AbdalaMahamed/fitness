@@ -108,10 +108,11 @@ export default {
 
 .hero-image {
   width: 40%;
-  max-height: 390px;
+  max-height: 900px;
+  margin-top: 50px;
   object-fit: cover;
   filter: brightness(70%);
-  border-radius: 20px;
+  border-radius: 50px;
 }
 
 .hero-section h1 {
@@ -208,6 +209,22 @@ export default {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .hero-image {
+    width: 60%;
+    max-height: 600px;
+    margin-top: 30px;
+  }
+  
+  .intro-section {
+    gap: 2rem;
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .intro-section {
     flex-direction: column;
@@ -218,6 +235,32 @@ export default {
     flex: none;
     width: 100%;
     max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image {
+    width: 90%;
+    max-height: 400px;
+    margin-top: 20px;
+  }
+  
+  .intro-text {
+    font-size: 1rem;
+  }
+  
+  .team-member img {
+    width: 100px;
+    height: 100px;
+    border-width: 3px;
+  }
+  
+  .team-member h3 {
+    font-size: 1.1rem;
+  }
+  
+  .team-member p {
+    font-size: 0.9rem;
   }
 }
 </style>

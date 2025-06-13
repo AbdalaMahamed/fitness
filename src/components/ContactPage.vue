@@ -302,14 +302,46 @@ button:hover:not(:disabled) {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .banner-image {
+    width: 75%;
+  }
+}
+
 @media (max-width: 768px) {
   .form-section {
     flex-direction: column;
   }
+
   .form-image-wrapper,
   form {
     max-width: 100%;
     flex: none;
   }
+
+  .banner-image {
+    width: 90%;
+  }
+
+  button {
+    width: 100%;
+    max-width: 300px;
+  }
 }
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .contact-info {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+}
+
 </style>

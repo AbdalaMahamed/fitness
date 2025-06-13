@@ -152,6 +152,7 @@ h1 {
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .body-part-buttons button:hover {
@@ -181,7 +182,6 @@ h1 {
   list-style: none;
   justify-items: center;
 }
-
 
 .exercise-card {
   background: #1a1a1a;
@@ -267,4 +267,26 @@ h1 {
   }
 }
 
+/* Responsive voor tablets en mobiel */
+@media (max-width: 1024px) {
+  .exercise-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .exercise-list {
+    grid-template-columns: 1fr;
+  }
+
+  .body-part-buttons {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .body-part-buttons button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
 </style>
