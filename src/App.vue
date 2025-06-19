@@ -36,3 +36,21 @@ export default {
   }
 }
 </script>
+<style>
+html, body, #app {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 10vh;
+}
+
+main {
+  flex: 1;
+
+}
+</style>
+

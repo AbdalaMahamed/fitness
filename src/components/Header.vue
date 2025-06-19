@@ -5,18 +5,18 @@
       <span></span>
     </div>
 
-    <button class="hamburger" @click="toggleMenu" aria-label="Toggle navigation">
-      <span :class="{ open: menuOpen }"></span>
-      <span :class="{ open: menuOpen }"></span>
-      <span :class="{ open: menuOpen }"></span>
+    <button class="hamburger" :class="{ open: menuOpen }" @click="toggleMenu" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
     <nav :class="['nav', { open: menuOpen }]">
-      <button @click="$emit('navigate', 'home')">Home</button>
-      <button @click="$emit('navigate', 'fitness')">Workouts</button>
-      <button @click="$emit('navigate', 'nutrition')">Nutrition Plan</button>
-      <button @click="$emit('navigate', 'contact')">Contact</button>
-      <button @click="$emit('navigate', 'about')">About Us</button>
+      <button @click="navigateAndCloseMenu('home')">Home</button>
+      <button @click="navigateAndCloseMenu('fitness')">Workouts</button>
+      <button @click="navigateAndCloseMenu('nutrition')">Nutrition Plan</button>
+      <button @click="navigateAndCloseMenu('contact')">Contact</button>
+      <button @click="navigateAndCloseMenu('about')">About Us</button>
     </nav>
   </header>
 </template>
@@ -32,6 +32,10 @@ export default {
   methods: {
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
+    },
+    navigateAndCloseMenu(page) {
+      this.$emit('navigate', page);
+      this.menuOpen = false;
     }
   }
 };
@@ -58,7 +62,7 @@ export default {
 }
 
 .logo img {
-  height: 60px; /* iets kleiner voor mobiel en desktop */
+  height: 60px;
   object-fit: contain;
 }
 
@@ -119,6 +123,8 @@ export default {
   border: none;
   cursor: pointer;
   padding: 0;
+  position: relative;
+  z-index: 1100;
 }
 
 .hamburger span {
@@ -127,25 +133,23 @@ export default {
   background: white;
   border-radius: 2px;
   transition: all 0.3s ease;
-  transform-origin: 1px;
 }
 
-.hamburger span.open:nth-child(1) {
-  transform: rotate(45deg);
+/* Geen kruis-animatie bij openen */
+.hamburger.open span:nth-child(1),
+.hamburger.open span:nth-child(2),
+.hamburger.open span:nth-child(3) {
+  transform: none;
+  opacity: 1;
 }
 
-.hamburger span.open:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger span.open:nth-child(3) {
-  transform: rotate(-45deg);
-}
-
-/* Mobiel: hamburger tonen, menu verbergen */
+/* Mobiel */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
+    position: absolute;
+    top: 1.4rem;
+    right: 2rem;
   }
 
   .nav {
@@ -153,6 +157,10 @@ export default {
     flex-direction: column;
     width: 100%;
     margin-top: 0.5rem;
+    background-color: #000;
+    position: absolute;
+    top: 100%;
+    left: 0;
   }
 
   .nav.open {
@@ -162,7 +170,6 @@ export default {
   .nav button {
     flex: 1 1 100%;
     text-align: left;
-    padding: 0.75rem 0;
     border-top: 1px solid #333;
   }
 }

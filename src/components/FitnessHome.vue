@@ -39,13 +39,13 @@
       </div>
     </section>
 
-    <!-- Training Programs & Nutrition Plan Section -->
+    <!-- About Our & Nutrition Plan Section -->
     <section class="info-sections">
-      <div class="info-card">
-        <h3>Training Programs</h3>
-        <p>World-Class training programs backed by science-based evidence</p>
-        <button @click="goToFitness">Learn More</button>
-      </div>
+    <div class="info-card">
+    <h3>Meet Our Team</h3>
+    <p>Want to know more about the people behind the programs? Learn more about our mission and coaches.</p>
+    <button @click="$emit('navigate', 'about')">Learn More</button>
+  </div>
       <div class="info-card">
         <h3>Nutrition Plan</h3>
         <p>15 Chapters and over 250 pages of nutrition knowledge</p>
@@ -115,7 +115,7 @@ export default {
       bmr: null,
       programs: [
         {
-          icon: 'https://img.icons8.com/ios-filled/50/weightlifting.png',
+          // icon: 'https://img.icons8.com/ios-filled/50/weightlifting.png',
           title: 'Strength Training',
           description: 'Build muscle, gain strength, and increase endurance with personalized programs.'
         },
@@ -223,16 +223,16 @@ export default {
   text-align: center;
   color: white;
   background: rgba(0, 0, 0, 0.4);
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 .overlay h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   font-weight: 700;
   text-shadow: 0 0 12px rgba(0,0,0,0.7);
 }
 .overlay p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
   max-width: 600px;
   text-shadow: 0 0 8px rgba(0,0,0,0.7);
@@ -254,75 +254,69 @@ export default {
 
 /* Programs Section */
 .programs {
-  padding: 4rem 2rem;
+  padding: 4rem 1.5rem;
   text-align: center;
   background: #f9fafb;
 }
 .programs h2 {
   font-size: 2.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 .cards {
   display: flex;
   justify-content: center;
-  gap: 3rem;
   flex-wrap: wrap;
+  gap: 2rem;
 }
 .card {
   background: white;
-  padding: 2.5rem 2rem;
+  padding: 2rem;
   border-radius: 1rem;
   width: 280px;
-  box-shadow: 0 6px 15px rgb(0 0 0 / 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
-  user-select: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
 }
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgb(0 0 0 / 0.15);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 .card img {
   width: 50px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .card h3 {
   font-weight: 700;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
 }
 .card p {
   color: #475569;
-  font-size: 1rem;
-  line-height: 1.4;
 }
 
-/* Most Popular Section */
+/* Most Popular */
 .most-popular {
-  padding: 4rem 2rem;
+  padding: 4rem 1.5rem;
   background: #fff7f7;
   text-align: center;
 }
 .most-popular h2 {
   font-size: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   color: #e11d48;
 }
 .popular-cards {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
 }
 .popular-card {
-  background: white;
-  border-radius: 1rem;
-  padding: 1.8rem 2rem;
   width: 260px;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: white;
   box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-  text-align: left;
   position: relative;
-  cursor: default;
+  text-align: left;
 }
 .popular-card .tag {
   position: absolute;
@@ -330,25 +324,20 @@ export default {
   right: 1rem;
   background: #e11d48;
   color: white;
-  padding: 0.25rem 0.7rem;
-  font-weight: 700;
-  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  font-weight: 600;
   border-radius: 6px;
-  user-select: none;
 }
 .popular-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.4rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 .popular-card p {
-  margin: 0.2rem 0;
   color: #475569;
+  margin: 0.2rem 0;
 }
 .popular-card .experience {
   font-style: italic;
-  color: #64748b;
 }
 .popular-card .price {
   font-weight: 700;
@@ -360,11 +349,10 @@ export default {
 .info-sections {
   display: flex;
   justify-content: center;
-  gap: 3rem;
-  padding: 3rem 2rem;
-  max-width: 900px;
-  margin: 0 auto 4rem;
+  gap: 2rem;
   flex-wrap: wrap;
+  padding: 3rem 1.5rem;
+  background: #fff;
 }
 .info-card {
   background: #fef3f3;
@@ -378,20 +366,18 @@ export default {
   color: #e11d48;
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  font-weight: 700;
 }
 .info-card p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 1.5rem;
-  color: #334155;
 }
 .info-card button {
   background: #e11d48;
-  color: white;
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 9999px;
   font-weight: 600;
+  color: white;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -399,15 +385,20 @@ export default {
   background: #be123c;
 }
 
-/* Video Preview Section */
+/* Video Preview */
 .video-preview {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3rem 2rem;
-  gap: 3rem;
+  gap: 2rem;
   flex-wrap: wrap;
+  padding: 3rem 1.5rem;
   background: #f9fafb;
+}
+.video-preview img {
+  max-width: 450px;
+  border-radius: 1rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 .text-content {
   max-width: 400px;
@@ -415,30 +406,24 @@ export default {
 .text-content h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #1e293b;
 }
 .text-content p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
   color: #475569;
 }
 .text-content button {
   background: #e11d48;
-  color: white;
   border: none;
   padding: 0.8rem 2rem;
   border-radius: 9999px;
   font-weight: 600;
+  color: white;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 .text-content button:hover {
   background: #be123c;
-}
-.preview-video {
-  max-width: 450px;
-  border-radius: 1rem;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
 /* BMR Section */
@@ -452,8 +437,8 @@ export default {
   text-align: center;
 }
 .bmr-section h2 {
-  color: #e11d48;
   margin-bottom: 1.5rem;
+  color: #e11d48;
 }
 .form-group {
   margin-bottom: 1rem;
@@ -463,7 +448,6 @@ export default {
   display: block;
   margin-bottom: 0.3rem;
   font-weight: 600;
-  color: #475569;
 }
 .form-group input,
 .form-group select {
@@ -474,14 +458,14 @@ export default {
   font-size: 1rem;
 }
 .bmr-section button {
+  margin-top: 1rem;
   background: #e11d48;
-  color: white;
   border: none;
-  padding: 0.8rem 3rem;
+  padding: 0.8rem 2.5rem;
   border-radius: 9999px;
   font-weight: 700;
+  color: white;
   cursor: pointer;
-  margin-top: 1rem;
   transition: background 0.3s ease;
 }
 .bmr-section button:hover {
@@ -491,24 +475,34 @@ export default {
   margin-top: 1.5rem;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #1e293b;
 }
 
-/* Responsive */
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .overlay h1 {
+    font-size: 2.8rem;
+  }
+  .overlay p {
+    font-size: 1rem;
+  }
+}
 @media (max-width: 768px) {
   .cards,
-  .popular-cards {
+  .popular-cards,
+  .info-sections,
+  .video-preview {
     flex-direction: column;
     align-items: center;
   }
-  .info-sections {
-    flex-direction: column;
+  .overlay h1 {
+    font-size: 2.2rem;
   }
-  .video-preview {
-    flex-direction: column;
+  .overlay p {
+    font-size: 1rem;
   }
-  .preview-video {
+  .video-preview img {
     max-width: 100%;
   }
 }
+
 </style>
