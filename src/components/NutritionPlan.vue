@@ -84,8 +84,8 @@ export default {
   },
   methods: {
     buyProduct() {
-      // Redirect to checkout or purchase link
-      window.open('https://jeffnippard.com/checkout-url', '_blank');
+      // ✅ Vervang de onderstaande link met je echte Payhip of Gumroad checkout URL
+      window.location.href = 'https://payhip.com/b/JouwProductCode';
     },
     toggleFaq(item) {
       item.open = !item.open;
@@ -270,5 +270,4 @@ export default {
     align-items: center;
   }
 }
-
 </style>

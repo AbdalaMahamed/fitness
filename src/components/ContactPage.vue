@@ -13,7 +13,7 @@
       <h2>Question About Your Order?</h2>
       <p>
         Send an email to
-        <a href="mailto:info@jeffnippard.com">info@jeffnippard.com</a> and please allow
+        <a href="mailto:info@wolfrep.com">info@wolfrep.com</a> and please allow
         3-5 business days for a reply.
       </p>
 
