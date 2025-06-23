@@ -5,13 +5,17 @@
     <section class="hero">
       <div class="hero-content">
         <div class="text-block">
-          <h1>The Ultimate Guide to Body Recomposition</h1>
-          <p>Learn to build muscle and lose fat simultaneously with science-based training and nutrition strategies.</p>
+          <h1>The Complete Nutrition Guide for Building Muscle and Losing Fat</h1>
+          <p>Discover how smart nutrition helps you gain muscle and lose fat at the same time.</p>
           <button @click="buyProduct" class="buy-btn">Buy Now - $49</button>
           <p class="guarantee">30-day money-back guarantee</p>
         </div>
         <div class="image-block">
-          <img src="https://i.pinimg.com/736x/3e/a4/55/3ea455608afb98246896c214dcb65a8c.jpg" alt="Ultimate Guide to Body Recomposition" />
+          <img
+            src="https://i.pinimg.com/736x/3e/a4/55/3ea455608afb98246896c214dcb65a8c.jpg"
+            alt="Nutrition Guide for Muscle Building and Fat Loss"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
@@ -20,10 +24,10 @@
     <section class="features">
       <h2>What You'll Get</h2>
       <ul>
-        <li><strong>Comprehensive Training Plans:</strong> Structured workouts designed for fat loss and muscle gain.</li>
-        <li><strong>Nutrition Guide:</strong> Macro tracking and meal plans optimized for recomposition.</li>
-        <li><strong>Video Tutorials:</strong> Step-by-step exercise demonstrations and coaching tips.</li>
-        <li><strong>Progress Tracking:</strong> Tools and templates to monitor your progress effectively.</li>
+        <li><strong>Detailed Nutrition Plans:</strong> Simple, effective meal plans for muscle growth and fat loss.</li>
+        <li><strong>Macros and Calories:</strong> Learn how to track macros to reach your goals.</li>
+        <li><strong>Video Tutorials:</strong> Step-by-step nutrition advice and practical tips.</li>
+        <li><strong>Progress Tracking:</strong> Easy-to-use tools to monitor your results.</li>
       </ul>
     </section>
 
@@ -55,28 +59,28 @@
 
 <script>
 export default {
-  name: "BodyRecompositionGuide",
+  name: "NutritionGuide",
   data() {
     return {
       testimonials: [
-        { name: "Alex P.", quote: "This guide transformed the way I train and eat. Lost fat and gained muscle like never before!" },
-        { name: "Samantha L.", quote: "Clear, actionable, and backed by science. Worth every penny." },
-        { name: "Michael W.", quote: "The best body recomposition resource I've found. Highly recommend." },
+        { name: "Alex P.", quote: "This guide helped me understand my nutrition better and I see real results." },
+        { name: "Samantha L.", quote: "Clear and easy-to-follow nutrition advice that really works." },
+        { name: "Michael W.", quote: "Perfect balance between muscle building and fat loss. Highly recommended!" },
       ],
       faqs: [
         {
           question: "Is this guide suitable for beginners?",
-          answer: "Yes, it covers foundational principles and also advanced techniques for all levels.",
+          answer: "Yes, it explains everything step-by-step and is great for all levels.",
           open: false,
         },
         {
-          question: "Do I need a gym membership?",
-          answer: "Most training plans require gym equipment, but there are alternative home workouts included.",
+          question: "Can I follow this without special supplements?",
+          answer: "Absolutely, the focus is on food and training; supplements are optional.",
           open: false,
         },
         {
-          question: "How long until I see results?",
-          answer: "Results vary but many users notice changes within 8-12 weeks following the program.",
+          question: "How soon will I see results?",
+          answer: "With consistency, most people notice changes within 8-12 weeks.",
           open: false,
         },
       ],
@@ -84,11 +88,21 @@ export default {
   },
   methods: {
     buyProduct() {
-      // ✅ Vervang de onderstaande link met je echte Payhip of Gumroad checkout URL
-      window.location.href = 'https://payhip.com/b/JouwProductCode';
+      window.location.href = 'https://payhip.com/b/YourProductCode'; // Pas aan naar jouw checkout URL
     },
     toggleFaq(item) {
       item.open = !item.open;
+    }
+  },
+  metaInfo() {
+    return {
+      title: 'Nutrition Guide for Muscle Building and Fat Loss | YourSiteName',
+      meta: [
+        {
+          name: 'description',
+          content: 'Learn how to build muscle and lose fat with smart nutrition. Includes meal plans, macro tracking, and helpful tools.'
+        }
+      ]
     }
   }
 };

@@ -1,32 +1,31 @@
 <template>
   <main class="contact-container">
+
     <!-- Banner Image -->
     <img
       class="banner-image"
       src="https://www.verywellfit.com/thmb/dT2j--w4-qV_dXTGu7NsnQCYC0A=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/1229823-GettyImages-1370779225-1c0cadcb4dd045daa2dad4e3040acf65.jpg"
-      alt="Contact Banner"
+      alt="Contact us banner"
+      loading="lazy"
     />
 
-    <h1>Contact</h1>
+    <h1>Contact Us</h1>
 
     <section class="contact-info">
-      <h2>Question About Your Order?</h2>
+      <h2>Questions About Your Order?</h2>
       <p>
-        Send an email to
-        <a href="mailto:info@wolfrep.com">info@wolfrep.com</a> and please allow
-        3-5 business days for a reply.
+        Please email us at
+        <a href="mailto:info@wolfrep.com">info@wolfrep.com</a>. We aim to reply within 3-5 business days.
       </p>
 
-      <h2>Money Back Information</h2>
+      <h2>Refund Policy</h2>
       <p>
-        We review your request and respond via email, and if approved, a credit will be
-        issued within 30 days. Contact the card-issuing bank for details.
+        We review refund requests carefully and will respond by email. Approved refunds are credited within 30 days. For details, please contact your card issuer.
       </p>
 
-      <h2>Still Need Help?</h2>
+      <h2>Need Further Assistance?</h2>
       <p>
-        If you have any feedback or questions about our website or our service in general,
-        please send us a message by completing our enquiry form below.
+        If you have any feedback or questions about our website or services, please fill out the enquiry form below.
       </p>
     </section>
 
@@ -34,60 +33,70 @@
       <div class="form-image-wrapper">
         <img
           src="https://jeffnippard.com/cdn/shop/files/contact-jeff-nippard.png?v=1713843553&width=800"
-          alt="Contact Illustration"
+          alt="Illustration showing contact support"
           class="form-image"
+          loading="lazy"
         />
       </div>
 
       <form @submit.prevent="submitForm" novalidate>
         <h2>Enquiry Form</h2>
 
-        <label>
+        <label for="fullName">
           Full Name *
           <input
+            id="fullName"
             type="text"
             v-model.trim="form.fullName"
             required
             placeholder="Your full name"
+            aria-required="true"
           />
         </label>
 
-        <label>
+        <label for="email">
           Email *
           <input
+            id="email"
             type="email"
             v-model.trim="form.email"
             required
             placeholder="Your email address"
+            aria-required="true"
           />
         </label>
 
-        <label>
+        <label for="subject">
           Subject *
           <input
+            id="subject"
             type="text"
             v-model.trim="form.subject"
             required
             placeholder="Subject of your enquiry"
+            aria-required="true"
           />
         </label>
 
-        <label>
+        <label for="orderNumber">
           Order Number
           <input
+            id="orderNumber"
             type="text"
             v-model.trim="form.orderNumber"
             placeholder="If applicable"
           />
         </label>
 
-        <label>
+        <label for="message">
           Message *
           <textarea
+            id="message"
             v-model.trim="form.message"
             required
             placeholder="Your message"
             rows="6"
+            aria-required="true"
           ></textarea>
         </label>
 
@@ -95,10 +104,11 @@
           {{ loading ? 'Submitting...' : 'Submit' }}
         </button>
 
-        <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
-        <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+        <p v-if="successMessage" class="success-message" role="alert">{{ successMessage }}</p>
+        <p v-if="errorMessage" class="error-message" role="alert">{{ errorMessage }}</p>
       </form>
     </section>
+
   </main>
 </template>
 
@@ -157,8 +167,36 @@ export default {
       }
     },
   },
+  metaInfo() {
+    return {
+      title: 'Contact Us | WolfRep',
+      meta: [
+        {
+          name: 'description',
+          content: 'Get in touch with WolfRep for order inquiries, refunds, and support. Fill out our enquiry form or email us directly.'
+        },
+        {
+          name: 'keywords',
+          content: 'contact, customer support, refund policy, order inquiries, enquiry form, WolfRep'
+        },
+        {
+          property: 'og:title',
+          content: 'Contact Us | WolfRep'
+        },
+        {
+          property: 'og:description',
+          content: 'Get in touch with WolfRep for order inquiries, refunds, and support. Fill out our enquiry form or email us directly.'
+        },
+        {
+          property: 'og:type',
+          content: 'website'
+        }
+      ]
+    };
+  },
 };
 </script>
+
 
 <style scoped>
 .contact-container {
