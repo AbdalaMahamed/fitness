@@ -1,4 +1,22 @@
+<head>
+  <title>Fitness Plans - Unleash Your Potential | YourBrand</title>
+  <meta name="description" content="Unlock your full potential with science-backed workouts and expert coaching tailored to your fitness goals. Explore strength training, nutrition, and mobility programs." />
+  <meta name="keywords" content="Fitness, Strength Training, Nutrition Coaching, Mobility, Recovery, Workout Plans, BMR Calculator" />
+  <meta name="author" content="YourBrand" />
+  <meta property="og:title" content="Unleash Your Potential with Our Fitness Plans" />
+  <meta property="og:description" content="Science-backed workouts and expert coaching tailored to your goals." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="URL_to_your_hero_image_or_preview" />
+  <meta property="og:url" content="https://yourwebsite.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://yourwebsite.com" />
+  <link rel="icon" href="/favicon.ico" />
+</head>
+
+
 <template>
+
   <div class="home">
     <!-- Hero Section -->
     <section class="hero">
@@ -41,11 +59,11 @@
 
     <!-- About Our & Nutrition Plan Section -->
     <section class="info-sections">
-    <div class="info-card">
-    <h3>Meet Our Team</h3>
-    <p>Want to know more about the people behind the programs? Learn more about our mission and coaches.</p>
-    <button @click="$emit('navigate', 'about')">Learn More</button>
-  </div>
+      <div class="info-card">
+        <h3>Meet Our Team</h3>
+        <p>Want to know more about the people behind the programs? Learn more about our mission and coaches.</p>
+        <button @click="$emit('navigate', 'about')">Learn More</button>
+      </div>
       <div class="info-card">
         <h3>Nutrition Plan</h3>
         <p>15 Chapters and over 250 pages of nutrition knowledge</p>
@@ -60,9 +78,7 @@
         <p>Whether you're new to training or a seasoned athlete, we guide you with science-backed techniques.</p>
         <button @click="$emit('navigate', 'fitness')">See Fitness Plans</button>
       </div>
-     <img src="https://www.gymshark.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F8urtyqugdt2l%2Fn7bsM6FNEiiN1S112o654%2F03a8e2a49b9a401f4b26f5823b6b11b9%2Fmobile-jamal-browner-deadlift.jpg&w=3840&q=85" alt="">
-      
-      
+      <img src="https://www.gymshark.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F8urtyqugdt2l%2Fn7bsM6FNEiiN1S112o654%2F03a8e2a49b9a401f4b26f5823b6b11b9%2Fmobile-jamal-browner-deadlift.jpg&w=3840&q=85" alt="">
     </section>
 
     <!-- ✅ BMR Calculator Section -->
@@ -114,11 +130,11 @@ export default {
       weight: null,
       bmr: null,
       programs: [
-        {
-          // icon: 'https://img.icons8.com/ios-filled/50/weightlifting.png',
-          title: 'Strength Training',
-          description: 'Build muscle, gain strength, and increase endurance with personalized programs.'
-        },
+  {
+    icon: 'https://img.icons8.com/ios-filled/100/dumbbell.png',
+    title: 'Strength Training',
+    description: 'Build muscle, gain strength, and increase endurance with personalized programs.'
+  },
         {
           icon: 'https://img.icons8.com/ios-filled/50/apple.png',
           title: 'Nutrition Coaching',
@@ -165,10 +181,6 @@ export default {
     };
   },
   methods: {
-    scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    },
     calculateBMR() {
       if (this.gender === 'male') {
         this.bmr = Math.round(10 * this.weight + 6.25 * this.height - 5 * this.age + 5);
@@ -177,15 +189,6 @@ export default {
       } else {
         this.bmr = null;
       }
-    },
-    goToFitness() {
-      this.$router.push({ name: 'Fitness' }); // Make sure your route name is 'Fitness'
-    },
-    goToTrainingPrograms() {
-      this.$router.push({ name: 'TrainingPrograms' }); // Adjust route name accordingly
-    },
-    goToNutritionPlan() {
-      this.$router.push({ name: 'NutritionPlan' }); // Adjust route name accordingly
     }
   }
 }
@@ -426,83 +429,57 @@ export default {
   background: #be123c;
 }
 
-/* BMR Section */
+/* BMR Calculator */
 .bmr-section {
+  padding: 4rem 1.5rem;
+  background: white;
   max-width: 500px;
-  margin: 0 auto 5rem;
-  padding: 2rem;
-  background: #fff7f7;
+  margin: 0 auto 4rem auto;
   border-radius: 1rem;
-  box-shadow: 0 6px 15px rgba(225, 29, 72, 0.2);
-  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
 }
 .bmr-section h2 {
-  margin-bottom: 1.5rem;
-  color: #e11d48;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1e293b;
 }
 .form-group {
-  margin-bottom: 1rem;
-  text-align: left;
+  margin-bottom: 1.25rem;
 }
 .form-group label {
   display: block;
-  margin-bottom: 0.3rem;
-  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #334155;
 }
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 0.6rem;
-  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
   border: 1px solid #cbd5e1;
   font-size: 1rem;
+  color: #1e293b;
 }
-.bmr-section button {
-  margin-top: 1rem;
+button[type="submit"] {
   background: #e11d48;
+  color: white;
   border: none;
-  padding: 0.8rem 2.5rem;
+  padding: 0.75rem 2rem;
   border-radius: 9999px;
   font-weight: 700;
-  color: white;
   cursor: pointer;
+  width: 100%;
+  font-size: 1.1rem;
   transition: background 0.3s ease;
 }
-.bmr-section button:hover {
+button[type="submit"]:hover {
   background: #be123c;
 }
 .bmr-result {
   margin-top: 1.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #334155;
 }
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .overlay h1 {
-    font-size: 2.8rem;
-  }
-  .overlay p {
-    font-size: 1rem;
-  }
-}
-@media (max-width: 768px) {
-  .cards,
-  .popular-cards,
-  .info-sections,
-  .video-preview {
-    flex-direction: column;
-    align-items: center;
-  }
-  .overlay h1 {
-    font-size: 2.2rem;
-  }
-  .overlay p {
-    font-size: 1rem;
-  }
-  .video-preview img {
-    max-width: 100%;
-  }
-}
-
 </style>

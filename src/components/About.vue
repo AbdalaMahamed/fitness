@@ -4,33 +4,31 @@
     <section class="hero-section">
       <img
         src="https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2016/02/jeremy-lat-pulldowns.jpg?quality=86&strip=all"
-        alt="Jeff Nippard"
+        alt="Jeff Nippard demonstrating a lat pulldown exercise"
         class="hero-image"
+        loading="lazy"
       />
-     
+      <h1 class="hero-title">About WolfRep</h1>
     </section>
 
     <!-- Intro Section -->
     <section class="intro-section container">
       <div class="intro-text">
         <p>
-          Jeff is a professional drug-free bodybuilder and powerlifter.
-          Through his informative and entertaining YouTube channel which has gathered a fan-base of almost 7M subscribers, Jeff aims to share the knowledge he has gathered through university education and field experience with others who are passionate about the science behind building muscle, losing fat and getting healthier.
-        </p>
-        <p>
-          He earned the title of Mr. Junior Canada for natural bodybuilding in 2012 and as a powerlifter, Jeff held the Canadian national record for the bench press in 2014. As a powerlifter, Jeff has claimed a 502 lb squat, 336 lb bench press and a 518 lb deadlift with an all time best Wilks score of 446.
-        </p>
-        <p>
-          With a Bachelor of Science degree in biochemistry, Jeff has gathered the requisite scientific knowledge to complement his practical experience acquired through training and coaching. Jeff has coached women’s bikini and men’s bodybuilding national and provincial champions, professional natural bodybuilders and nationally and IPF Worlds qualified raw powerlifters. He has presented seminars on block periodization, concurrent training and nutrition and training for natural bodybuilding in academic settings including the 2014 Online Fitness Summit, the 2019 ultimate evidence-based conference (UEBC) and has guest lectured at the University of Iowa and Lehman College. He has aspirations of completing a PhD in exercise science or a related field.
-        </p>
-        <p>
-          Jeff currently lives in Ontario, Canada where he is producing informative YouTube videos and podcasts.
+          Wolfrep Fitness is a leading online platform dedicated to providing reliable, science-based information on strength training, bodybuilding, and overall fitness. With a mission to equip athletes and fitness enthusiasts with the best tools and knowledge, Wolfrep Fitness offers in-depth articles, training programs, nutrition advice, and product reviews—all grounded in evidence-based research.
+
+          The team behind Wolfrep Fitness consists of experienced coaches, scientists, and athletes committed to promoting a healthy and sustainable approach to training and nutrition. The platform strongly emphasizes natural strength training and focuses on maximizing performance without the use of banned substances.
+
+          In addition to educational content, Wolfrep Fitness features inspiring success stories and interviews with top athletes and experts in the fitness community. This makes it a valuable resource for anyone serious about improving body composition, strength, and overall health.
+
+          Based in the Netherlands, Wolfrep Fitness continues to grow in popularity thanks to its combination of deep knowledge, practical experience, and an accessible communication style. The platform serves as a trusted guide for beginners and advanced athletes alike who strive for optimal results in a responsible way.
         </p>
       </div>
       <div class="intro-image">
         <img
           src="https://cdn.shopify.com/s/files/1/1633/7705/files/Chris_Bumstead_supplements_480x480.jpg?v=1658503246"
           alt="Jeff Nippard Profile"
+          loading="lazy"
         />
       </div>
     </section>
@@ -43,6 +41,7 @@
           <img
             src="https://jeffnippard.com/cdn/shop/files/max-edsey.jpg?v=1713836812&width=400"
             alt="Max Edsey"
+            loading="lazy"
           />
           <h3>Max Edsey</h3>
           <p>
@@ -54,6 +53,7 @@
           <img
             src="https://jeffnippard.com/cdn/shop/files/patrick-macinnis.jpg?v=1713836812&width=400"
             alt="Patrick MacInnis"
+            loading="lazy"
           />
           <h3>Patrick MacInnis</h3>
           <p>
@@ -66,6 +66,7 @@
           <img
             src="https://jeffnippard.com/cdn/shop/files/denise-henstride.jpg?v=1713833982&width=800"
             alt="Denise Henstridge"
+            loading="lazy"
           />
           <h3>Denise Henstridge B.Ed. E , ECITS PTC</h3>
           <p>
@@ -82,10 +83,38 @@
 <script>
 export default {
   name: "AboutPage",
-};
+  metaInfo() {
+    return {
+      title: 'About WolfRep - WolfRep Fitness',
+      meta: [
+        {
+          name: 'description',
+          content: 'WolfRep Fitness is een toonaangevend platform voor evidence-based fitness informatie en training.'
+        },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1'
+        },
+        {
+          property: 'og:title',
+          content: 'About WolfRep - WolfRep Fitness'
+        },
+        {
+          property: 'og:description',
+          content: 'Ontdek alles over WolfRep Fitness, ons team en onze missie.'
+        },
+        {
+          property: 'og:image',
+          content: 'https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2016/02/jeremy-lat-pulldowns.jpg?quality=86&strip=all'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style scoped>
+/* ... Jouw bestaande CSS-styling hier ... */
 .about-page {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #222;
@@ -115,7 +144,7 @@ export default {
   border-radius: 50px;
 }
 
-.hero-section h1 {
+.hero-title {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -125,6 +154,9 @@ export default {
   font-weight: 700;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
   user-select: none;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Intro Section */

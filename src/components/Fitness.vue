@@ -107,6 +107,33 @@ export default {
   mounted() {
     this.fetchBodyParts();
   },
+  metaInfo() {
+    return {
+      title: 'All Workouts | YourSiteName',
+      meta: [
+        {
+          name: 'description',
+          content: 'Browse workouts by body part to build muscle, lose fat, and improve fitness. Video tutorials included.'
+        },
+        {
+          name: 'keywords',
+          content: 'workouts, fitness, muscle building, fat loss, body parts, exercise videos'
+        },
+        {
+          property: 'og:title',
+          content: 'All Workouts | YourSiteName'
+        },
+        {
+          property: 'og:description',
+          content: 'Browse workouts by body part to build muscle, lose fat, and improve fitness. Video tutorials included.'
+        },
+        {
+          property: 'og:type',
+          content: 'website'
+        }
+      ]
+    };
+  },
 };
 </script>
 
