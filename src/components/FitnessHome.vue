@@ -1,5 +1,5 @@
 <head>
-  <title>Fitness Plans - Unleash Your Potential | YourBrand</title>
+  <title>Fitness Plans - Unleash Your Potential | WolfRep</title>
   <meta name="description" content="Unlock your full potential with science-backed workouts and expert coaching tailored to your fitness goals. Explore strength training, nutrition, and mobility programs." />
   <meta name="keywords" content="Fitness, Strength Training, Nutrition Coaching, Mobility, Recovery, Workout Plans, BMR Calculator" />
   <meta name="author" content="YourBrand" />
@@ -7,10 +7,10 @@
   <meta property="og:description" content="Science-backed workouts and expert coaching tailored to your goals." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="URL_to_your_hero_image_or_preview" />
-  <meta property="og:url" content="https://yourwebsite.com" />
+  <meta property="og:url" content="http://localhost:8080/home" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="canonical" href="https://yourwebsite.com" />
+  <link rel="canonical" href="http://localhost:8080/home" />
   <link rel="icon" href="/favicon.ico" />
 </head>
 
